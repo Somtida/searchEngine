@@ -18,7 +18,11 @@ var SearchForm = React.createClass({
   searchText(e) {
     e.preventDefault();
 
-    console.log('search')
+    var search = {
+      text: this.refs.text.value.trim();
+    }
+
+    AppActions.searchText(search);
   }
 
 })
