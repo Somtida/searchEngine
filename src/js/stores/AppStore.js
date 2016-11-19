@@ -10,7 +10,9 @@ var _items = [];
 var _searchText = "";
 
 var AppStore = assign({}, EventEmitter.prototype, {
-
+  setSearchText(search) {
+    _searchText = search.text;
+  },
   emitChange: function() {
     this.emit(CHANGE_EVENT);
   },
