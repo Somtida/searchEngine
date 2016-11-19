@@ -6,7 +6,7 @@ var SearchForm = React.createClass({
   render(){
     return(
       <div className="alert alert-info">
-        <form>
+        <form onChange={this.searchText}>
           <div className="form-group">
             <label>Search For Something...</label>
             <input type="text" className="form-control" ref="text" />
@@ -15,6 +15,11 @@ var SearchForm = React.createClass({
       </div>
     )
   },
+  searchText(e) {
+    e.preventDefault();
+
+    console.log('search')
+  }
 
 })
 
