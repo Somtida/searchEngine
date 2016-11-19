@@ -7,6 +7,7 @@ var AppAPI = require('../utils/appAPI.js');
 var CHANGE_EVENT = 'change';
 
 var _items = [];
+var _searchText = "";
 
 var AppStore = assign({}, EventEmitter.prototype, {
 
