@@ -1,6 +1,8 @@
 var React = require('react');
 var AppActions = require('../actions/AppActions');
 var AppStore = require('../stores/AppStore');
+var SearchForm = require('./SearchForm');
+var SearchResults = require('./SearchResults');
 
 
 function getAppState() {
@@ -31,7 +33,8 @@ var App = React.createClass({
     return(
       <div className="container">
         <div className="jumbotron">
-        
+          <SearchForm />
+          <SearchResults />
         </div>
       </div>
     )
