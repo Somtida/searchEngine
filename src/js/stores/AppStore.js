@@ -25,7 +25,11 @@ AppDispatcher.register(function(payload) {
   var action = payload.action;
 
   switch(action.actionType) {
-    
+    case AppConstants.SEARCH_TEXT:
+      AppAPI.searchText(action.search);
+      AppStore.setSearchText(action.search);
+      AppStore.emit(CHANGE_EVENT);
+      break;
   }
 
   return true;
