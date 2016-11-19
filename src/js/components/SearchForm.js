@@ -5,8 +5,13 @@ var AppStore = require('../stores/AppStore');
 var SearchForm = React.createClass({
   render(){
     return(
-      <div className="search-form">
-        SearchForm
+      <div className="alert alert-info">
+        <form>
+          <div className="form-group">
+            <label>Search For Something...</label>
+            <input type="text" className="form-control" ref="text" />
+          </div>
+        </form>
       </div>
     )
   },

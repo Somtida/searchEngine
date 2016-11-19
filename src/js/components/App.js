@@ -31,11 +31,10 @@ var App = React.createClass({
 
   render(){
     return(
-      <div className="container">
-        <div className="jumbotron">
-          <SearchForm />
-          <SearchResults />
-        </div>
+      <div>
+        <SearchForm />
+        <SearchResults />
+
       </div>
     )
   }
