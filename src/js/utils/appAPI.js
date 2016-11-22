@@ -9,7 +9,7 @@ module.exports = {
       dataType: 'jsonp',
       cache: false,
       success: function(data){
-        console.log(data.RelatedTopics)
+        AppActions.receiveResults(data.RelatedTopics);
       }.bind(this),
       error: function(xhr, status, err) {
         console.log(err);
