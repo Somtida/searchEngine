@@ -33,7 +33,12 @@ AppDispatcher.register(function(payload) {
       AppStore.setSearchText(action.search);
       AppStore.emit(CHANGE_EVENT);
       break;
-  }
+
+    case AppConstants.RECEIVE_RESULTS:
+      console.log('hello');
+      AppStore.emit(CHANGE_EVENT);
+      break;
+
 
   return true;
 });
