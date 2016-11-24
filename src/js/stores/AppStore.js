@@ -35,7 +35,7 @@ AppDispatcher.register(function(payload) {
       break;
 
     case AppConstants.RECEIVE_RESULTS:
-      console.log(action.results);
+      AppStore.setResults(action.results);
       AppStore.emit(CHANGE_EVENT);
       break;
 
