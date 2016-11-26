@@ -7,7 +7,7 @@ var SearchResults = require('./SearchResults');
 
 function getAppState() {
   return {
-
+    results: AppStore.getResults()
   }
 }
 
