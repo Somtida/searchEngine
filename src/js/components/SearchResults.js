@@ -6,7 +6,11 @@ var SearchResults = React.createClass({
   render(){
     return(
       <div className="search-form">
-        SearchResults
+        
+        <div>
+	  <h2 className=“page-header”>Results</h2>
+        </div>
+
       </div>
     )
   },
