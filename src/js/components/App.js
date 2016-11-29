@@ -34,7 +34,7 @@ var App = React.createClass({
     return(
       <div>
         <SearchForm />
-        <SearchResults results={this.state.results} />
+        <SearchResults searchText={this.state.searchText} results={this.state.results} />
       </div>
     )
   }
