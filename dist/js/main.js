@@ -19923,7 +19923,7 @@ var SearchResults = React.createClass({displayName: "SearchResults",
       React.createElement("div", {className: "search-form"}, 
 
         React.createElement("div", null, 
-	       React.createElement("h2", null, results)
+	       results
         )
 
       )

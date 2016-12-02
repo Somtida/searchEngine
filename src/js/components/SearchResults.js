@@ -13,7 +13,7 @@ var SearchResults = React.createClass({
       <div className="search-form">
 
         <div>
-	       <h2>{results}</h2>
+	       {results}
         </div>
 
       </div>
