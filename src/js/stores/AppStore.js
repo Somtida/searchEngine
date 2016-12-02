@@ -18,7 +18,7 @@ var AppStore = assign({}, EventEmitter.prototype, {
   },
   setResults(results) {
     _results = results;
-  },  
+  },
    getResults() {
     return results;
   },
@@ -48,7 +48,7 @@ AppDispatcher.register(function(payload) {
       AppStore.emit(CHANGE_EVENT);
       break;
 
-
+  }
   return true;
 });
 

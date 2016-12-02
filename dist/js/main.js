@@ -19815,7 +19815,12 @@ var AppDispatcher = require('../dispatcher/AppDispatcher');
 var AppConstants = require('../constants/AppConstants');
 
 var AppActions = {
-  
+  searchText(search) {
+    AppDispatcher.handleViewAction({
+      actionType: AppConstants.SEARCH_TEXT,
+      search
+    })
+  },
 
 }
 
@@ -19831,7 +19836,8 @@ var SearchResults = require('./SearchResults');
 
 function getAppState() {
   return {
-
+    results: AppStore.getResults(),
+    searchText: AppStore.getSearchText()
   }
 }
 
@@ -19857,8 +19863,7 @@ var App = React.createClass({displayName: "App",
     return(
       React.createElement("div", null, 
         React.createElement(SearchForm, null), 
-        React.createElement(SearchResults, null)
-
+        React.createElement(SearchResults, {searchText: this.state.searchText, results: this.state.results})
       )
     )
   }
@@ -19887,7 +19892,11 @@ var SearchForm = React.createClass({displayName: "SearchForm",
   searchText(e) {
     e.preventDefault();
 
-    console.log('search')
+    var search = {
+      text: this.refs.text.value.trim()
+    }
+
+    AppActions.searchText(search);
   }
 
 })
@@ -19901,9 +19910,18 @@ var AppStore = require('../stores/AppStore');
 
 var SearchResults = React.createClass({displayName: "SearchResults",
   render(){
+	if(this.porps.searchText != '') {
+		var results = React.createElement("h2", {className: "page-header"}, "Results")
+	} else {
+		var results = '';
+	}
     return(
       React.createElement("div", {className: "search-form"}, 
-        "SearchResults"
+
+        React.createElement("div", null, 
+	  React.createElement("h2", {className: "page-header"}, results)
+        )
+
       )
     )
   },
@@ -19914,7 +19932,8 @@ module.exports = SearchResults;
 
 },{"../actions/AppActions":164,"../stores/AppStore":171,"react":163}],168:[function(require,module,exports){
 module.exports = {
-
+  SEARCH_TEXT: 'SEARCH_TEXT',
+  RECEIVE_RESULTS: 'RECEIVE_RESULTS',
 }
 
 },{}],169:[function(require,module,exports){
@@ -19953,10 +19972,22 @@ var AppAPI = require('../utils/appAPI.js');
 
 var CHANGE_EVENT = 'change';
 
-var _items = [];
+var _results = [];
+var _searchText = "";
 
 var AppStore = assign({}, EventEmitter.prototype, {
-
+  setSearchText(search) {
+    _searchText = search.text;
+  },
+  getSearchText() {
+    return _searchText;
+  },
+  setResults(results) {
+    _results = results;
+  },
+   getResults() {
+    return results;
+  },
   emitChange: function() {
     this.emit(CHANGE_EVENT);
   },
@@ -19972,9 +20003,18 @@ AppDispatcher.register(function(payload) {
   var action = payload.action;
 
   switch(action.actionType) {
-    
-  }
+    case AppConstants.SEARCH_TEXT:
+      AppAPI.searchText(action.search);
+      AppStore.setSearchText(action.search);
+      AppStore.emit(CHANGE_EVENT);
+      break;
 
+    case AppConstants.RECEIVE_RESULTS:
+      AppStore.setResults(action.results);
+      AppStore.emit(CHANGE_EVENT);
+      break;
+
+  }
   return true;
 });
 
@@ -19984,7 +20024,21 @@ module.exports = AppStore;
 var AppActions = require('../actions/AppActions');
 
 module.exports = {
-  
+  searchText(search) {
+    console.log('API searching for '+search.text);
+    var url = `https://api.duckduckgo.com/?q=${search.text}&format=json&pretty=1`;
+    $.ajax({
+      url: url,
+      dataType: 'jsonp',
+      cache: false,
+      success: function(data){
+        AppActions.receiveResults(data.RelatedTopics);
+      }.bind(this),
+      error: function(xhr, status, err) {
+        console.log(err);
+      }.bind(this),
+    })
+  }
 }
 
 },{"../actions/AppActions":164}]},{},[170]);
