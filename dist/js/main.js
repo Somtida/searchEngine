@@ -19821,6 +19821,10 @@ var AppActions = {
       search
     })
   },
+  receiveResults(results) {
+    console.log(results);
+  },
+
 
 }
 
