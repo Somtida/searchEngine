@@ -4,7 +4,7 @@ var AppStore = require('../stores/AppStore');
 
 var SearchResults = React.createClass({
   render(){
-	if(this.porps.searchText != '') {
+	if(this.props.searchText != '') {
 		var results = <h2 className="page-header">Results</h2>
 	} else {
 		var results = '';
@@ -13,7 +13,7 @@ var SearchResults = React.createClass({
       <div className="search-form">
 
         <div>
-	  <h2 className="page-header">{results}</h2>
+	       <h2>{results}</h2>
         </div>
 
       </div>

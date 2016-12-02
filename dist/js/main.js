@@ -19910,7 +19910,7 @@ var AppStore = require('../stores/AppStore');
 
 var SearchResults = React.createClass({displayName: "SearchResults",
   render(){
-	if(this.porps.searchText != '') {
+	if(this.props.searchText != '') {
 		var results = React.createElement("h2", {className: "page-header"}, "Results")
 	} else {
 		var results = '';
@@ -19919,7 +19919,7 @@ var SearchResults = React.createClass({displayName: "SearchResults",
       React.createElement("div", {className: "search-form"}, 
 
         React.createElement("div", null, 
-	  React.createElement("h2", {className: "page-header"}, results)
+	       React.createElement("h2", null, results)
         )
 
       )
@@ -19986,7 +19986,7 @@ var AppStore = assign({}, EventEmitter.prototype, {
     _results = results;
   },
    getResults() {
-    return results;
+    return _results;
   },
   emitChange: function() {
     this.emit(CHANGE_EVENT);

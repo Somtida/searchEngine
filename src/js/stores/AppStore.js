@@ -20,7 +20,7 @@ var AppStore = assign({}, EventEmitter.prototype, {
     _results = results;
   },
    getResults() {
-    return results;
+    return _results;
   },
   emitChange: function() {
     this.emit(CHANGE_EVENT);
