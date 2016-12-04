@@ -1,8 +1,14 @@
 body {
-  background-color: skyblue;
+  background-color: #fff;
 }
 .h2 {
   color: darkblue;
+}
+.mytitle {
+  font-size: 60px;
+}
+.hilight {
+  color: #b3b3b3;
 }
 .search-form {
   margin: auto;
