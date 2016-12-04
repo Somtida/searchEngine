@@ -19888,8 +19888,7 @@ var Result = React.createClass({displayName: "Result",
   render(){
     return(
       React.createElement("div", null, 
-        React.createElement("p", {className: "content lead"}, 
-          this.props.result.Result
+        React.createElement("p", {className: "content lead", dangerouslySetInnerHTML: {__html:this.props.result.Result}}
         )
 
       )
