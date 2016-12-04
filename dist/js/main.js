@@ -19923,7 +19923,14 @@ var SearchResults = React.createClass({displayName: "SearchResults",
       React.createElement("div", {className: "search-form"}, 
 
         React.createElement("div", null, 
-	       results
+	       results, 
+         
+           this.props.results.map((result,i) => {
+             return (
+               React.createElement(Result, {result: result, key: i})
+             )
+           })
+         
         )
 
       )

@@ -14,6 +14,13 @@ var SearchResults = React.createClass({
 
         <div>
 	       {results}
+         {
+           this.props.results.map((result,i) => {
+             return (
+               <Result result={result} key={i} />
+             )
+           })
+         }
         </div>
 
       </div>
