@@ -1,8 +1,7 @@
-.jumbotron {
+body {
   background-color: skyblue;
-  margin-top: -30px;
 }
-.jumbotron h1 {
+.h2 {
   color: darkblue;
 }
 .search-form {
