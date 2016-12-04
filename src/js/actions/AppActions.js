@@ -9,7 +9,11 @@ var AppActions = {
     })
   },
   receiveResults(results) {
-    console.log(results);
+    // console.log(results);
+    AppDispatcher.handleViewAction({
+      actionType: AppConstants.RECEIVE_RESULTS,
+      results
+    })
   },
 
 

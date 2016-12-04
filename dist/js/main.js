@@ -19822,7 +19822,11 @@ var AppActions = {
     })
   },
   receiveResults(results) {
-    console.log(results);
+    // console.log(results);
+    AppDispatcher.handleViewAction({
+      actionType: AppConstants.RECEIVE_RESULTS,
+      results
+    })
   },
 
 
@@ -19905,7 +19909,7 @@ var SearchForm = React.createClass({displayName: "SearchForm",
   render(){
     return(
       React.createElement("div", {className: "alert alert-info"}, 
-        React.createElement("form", {onChange: this.searchText}, 
+        React.createElement("form", {onSubmit: this.searchText}, 
           React.createElement("div", {className: "form-group"}, 
             React.createElement("label", null, "Search For Something..."), 
             React.createElement("input", {type: "text", className: "form-control", ref: "text"})
